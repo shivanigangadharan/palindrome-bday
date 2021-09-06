@@ -15,36 +15,39 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    setDdmmyyyy(
-      date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4) ===
-        (date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4)).split('').reverse().join('') ? 'Pal' : 'Not'
-    );
+    // setDdmmyyyy(
+    //   date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4) ===
+    //     (date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4)).split('').reverse().join('') ? 'Pal' : 'Not'
+    // );
+    var tddmmyyyy = date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4) ===
+      (date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4)).split('').reverse().join('') ? 'Pal' : 'Not'
 
-    setMmddyyyy(
+    var tmmddyyyy = (
       date.slice(5, 7) + date.slice(8, 10) + date.slice(0, 4) ===
         (date.slice(5, 7) + date.slice(8, 10) + date.slice(0, 4)).split('').reverse().join('') ? 'Pal' : 'Not'
     );
-    setYyyymmdd(
+    var tyyyymmdd = (
       date.slice(0, 4) + date.slice(5, 7), date.slice(8, 10) ===
         (date.slice(0, 4) + date.slice(5, 7), date.slice(8, 10)).split('').reverse().join('') ? 'Pal' : 'Not'
     );
 
-    setDdmmyy(
+    var tddmmyy = (
       date.slice(8, 10) + date.slice(5, 7) + date.slice(2, 4) ===
         (date.slice(8, 10) + date.slice(5, 7) + date.slice(2, 4)).split('').reverse().join('') ? 'Pal' : 'Not'
     );
-    setMmddyy(
+    var tmmddyy = (
       date.slice(5, 7) + date.slice(8, 10) + date.slice(2, 4) ===
         (date.slice(5, 7) + date.slice(8, 10) + date.slice(2, 4)).split('').reverse().join('') ? 'Pal' : 'Not'
     );
 
-    setYymmdd(
+    var tyymmdd = (
       date.slice(2, 4) + date.slice(5, 7), date.slice(8, 10) ===
         (date.slice(2, 4) + date.slice(5, 7), date.slice(8, 10)).split('').reverse().join('') ? 'Pal' : 'Not'
     );
 
-    if (ddmmyyyy === 'Pal' || mmddyyyy === 'Pal' || yyyymmdd === 'Pal' || ddmmyy === 'Pal' || mmddyy === 'Pal' || yymmdd === 'Pal') {
+    if (tddmmyyyy === 'Pal' || tmmddyyyy === 'Pal' || tyyyymmdd === 'Pal' || tddmmyy === 'Pal' || tmmddyy === 'Pal' || tyymmdd === 'Pal') {
       setPalindrome('Palindrome');
+
     }
     else {
       setPalindrome('Not a palindrome');
