@@ -11,7 +11,10 @@ function App() {
   const [mmddyy, setMmddyy] = useState();
   const [yymmdd, setYymmdd] = useState();
   const [palindrome, setPalindrome] = useState();
-  const [value, setValues] = useState([]);
+  const [days, setDays] = useState();
+  const [nextday, setNextday] = useState();
+  const [nextmonth, setNextmonth] = useState();
+  const [nextyear, setNextyear] = useState();
 
   function getDate(d) {
     var date = {
@@ -187,7 +190,11 @@ function App() {
       setPalindrome('Not a palindrome');
     }
 
-    console.log(getNextPalindromeDate(getDate(date)));
+    setDays(getNextPalindromeDate(getDate(date))[0]);
+    setNextday(getNextPalindromeDate(getDate(date))[1].day);
+    setNextmonth(getNextPalindromeDate(getDate(date))[1].month);
+    setNextyear(getNextPalindromeDate(getDate(date))[1].year);
+
   }
 
   return (
@@ -203,6 +210,16 @@ function App() {
           {
             palindrome
           }
+        </div>
+        <div hidden={palindrome == 'Palindrome' ? true : false}>
+          <div hidden={nextday == undefined ? true : false}>
+            {nextday}-{nextmonth}-{nextyear}
+          </div>
+          <div hidden={days == undefined ? true : false}>
+            {
+              days
+            }
+          </div>
         </div>
       </center>
     </div>
