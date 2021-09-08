@@ -183,11 +183,11 @@ function App() {
     );
 
     if (tddmmyyyy === 'Pal' || tmmddyyyy === 'Pal' || tyyyymmdd === 'Pal' || tddmmyy === 'Pal' || tmmddyy === 'Pal' || tyymmdd === 'Pal') {
-      setPalindrome('Palindrome');
+      setPalindrome("It's a palindrome!");
 
     }
     else {
-      setPalindrome('Not a palindrome');
+      setPalindrome('Your birth date is not a palindrome.');
     }
 
     setDays(getNextPalindromeDate(getDate(date))[0]);
@@ -198,30 +198,36 @@ function App() {
   }
 
   return (
-    <div>
-      <center>
+    <div className="container">
+      <div className="ipContent">
         <h1>Palindrome Birthday </h1>
         <form>
-          <label> Enter your birthday </label><br />
+          <label> Enter your birthday </label> :
           <input required type="date" onChange={(e) => setDate(e.target.value)} /> <br />
           <button onClick={handleSubmit}> Show </button>
         </form>
+      </div>
+      <div className="opContent">
         <div hidden={palindrome === undefined ? true : false}>
           {
             palindrome
           }
         </div>
-        <div hidden={palindrome == 'Palindrome' ? true : false}>
+        <div hidden={palindrome == "It's a palindrome!" ? true : false}>
           <div hidden={nextday == undefined ? true : false}>
-            {nextday}-{nextmonth}-{nextyear}
+            <br />The next palindrome date would be on <b>{nextday}/{nextmonth}/{nextyear}</b>. <br /><br />
           </div>
           <div hidden={days == undefined ? true : false}>
-            {
+            This date is away from your birthday by<b> {
               days
-            }
+            } </b>days.
           </div>
+
         </div>
-      </center>
+        <div hidden={palindrome == "It's a palindrome!" ? false : true}>
+          <br />Fun fact : “Birthday Paradox” is the likelihood that out of 23 people, there is a 50/50 chance that two of them will have the same birthday. This probability goes up to 99% for a group of 57 people!
+        </div>
+      </div>
     </div>
   );
 }
