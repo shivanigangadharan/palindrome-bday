@@ -26,36 +26,32 @@ function App() {
   }
 
   function reverseString(str) {
-    var listOfChars = str.split('');
-    var reversedListOfChar = listOfChars.reverse();
-    var reversedString = reversedListOfChar.join('');
-    return reversedString;
+    return str.split('').reverse().join('');
   }
 
   function isStringPalindrome(str) {
-    var reversedString = reverseString(str);
-    return str === reversedString;
+    return str === reverseString(str);
   }
 
   function getDateAsString(date) {
-    var dateInStr = { day: '', month: '', year: '' };
+    var dateStr = { day: '', month: '', year: '' };
 
     if (date.day < 10) {
-      dateInStr.day = '0' + date.day;
+      dateStr.day = '0' + date.day;
     }
     else {
-      dateInStr.day = date.day.toString();
+      dateStr.day = date.day.toString();
     }
 
     if (date.month < 10) {
-      dateInStr.month = '0' + date.month;
+      dateStr.month = '0' + date.month;
     }
     else {
-      dateInStr.month = date.month.toString();
+      dateStr.month = date.month.toString();
     }
 
-    dateInStr.year = date.year.toString();
-    return dateInStr;
+    dateStr.year = date.year.toString();
+    return dateStr;
   }
 
   function getDateInAllFormats(date) {
@@ -156,6 +152,18 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (date == undefined) {
+      alert("Please enter a valid input for date.");
+      return 0;
+    }
+    var today = new Date();
+    today = today.getFullYear(); + '-' + String(today.getMonth() + 1).padStart(2, '0'); + '-' + String(today.getDate()).padStart(2, '0');
+    console.log('today = ', today);
+    console.log('sel = ', date);
+    if (date > today) {
+      alert('Please do not select your birthday as a date in the future.');
+      return 0;
+    }
     var tddmmyyyy = date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4) ===
       (date.slice(8, 10) + date.slice(5, 7) + date.slice(0, 4)).split('').reverse().join('') ? 'Pal' : 'Not'
 
